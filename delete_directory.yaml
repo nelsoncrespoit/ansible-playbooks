@@ -1,0 +1,9 @@
+---
+- name: 'Delete Directory'
+  hosts: centos_clients
+
+  tasks:
+          - name: 'Delete /opt/tomcat directory'
+            file:
+                    path: /opt/tomcat
+                    state: absent

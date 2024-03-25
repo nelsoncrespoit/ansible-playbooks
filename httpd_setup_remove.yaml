@@ -1,0 +1,20 @@
+---
+- name: 'Remove httpd and close firewall port'
+  hosts: centos_clients
+
+  tasks:
+          - name: 'Remove apache packages'
+            yum:
+                    name: httpd
+                    state: absent
+
+          - name: 'Close port 80 for http access'
+            firewalld:
+                    service: http
+                    permanent: true
+                    state: disabled
+
+          - name: 'Restart firewalld service to load firewall changes'
+            service:
+                    name: firewalld
+                    state: reloaded

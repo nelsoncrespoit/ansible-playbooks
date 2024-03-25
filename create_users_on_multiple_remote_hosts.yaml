@@ -1,0 +1,12 @@
+---
+- name: "Create Multiple Users in different hosts"
+  hosts: centos_clients
+
+  tasks:
+          - name: "Create Users"
+            user:
+                    name: "{{ item }}"
+            loop:
+                    - user1
+                    - user2
+                    - user3

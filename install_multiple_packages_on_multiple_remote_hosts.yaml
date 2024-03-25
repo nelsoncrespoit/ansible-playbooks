@@ -1,0 +1,11 @@
+---
+- name: "Install Multiple Apps"
+  hosts: centos_clients
+  vars:
+          packages: [ftp, htop, mc, nano]
+
+  tasks:
+          - name: "Install packages"
+            yum:
+                    name: "{{ packages }}"
+                    state: present

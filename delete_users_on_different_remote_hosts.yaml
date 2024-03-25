@@ -1,0 +1,17 @@
+---
+- name: "Create users by loop"
+  hosts: centos_clients
+  vars:
+          user_names:
+                  - user1
+                  - user2
+                  - user3
+
+  tasks:
+          - name: "Delete Users"
+            user:
+                    name: "{{ item }}"
+                    state: absent
+                    remove: true
+
+            loop: "{{ user_names }}"

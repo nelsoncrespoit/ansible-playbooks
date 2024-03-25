@@ -1,0 +1,10 @@
+---
+- name: "Enabling EPEL Repo"
+  hosts: centos_clients
+
+  tasks:
+          - name: "Enabling Repo"
+            yum:
+                    name: epel-release
+                    state: present
+

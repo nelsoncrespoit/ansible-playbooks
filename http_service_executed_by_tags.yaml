@@ -1,0 +1,20 @@
+---
+- name: 'Setup Apache Server'
+  hosts: centos_clients
+
+  tasks:
+          - name: 'Install httpd'
+            yum:
+                    name: httpd
+                    state: present
+            tags: i-httpd
+
+          - name: 'Start httpd'
+            service:
+                    name: httpd
+                    state: started
+            tags: s-httpd
+            
+            
+# ansible-playbook http_service_executed_by_tags --list-tags  --- for listing the tags
+# ansible-playbook http_service_executed_by_tags -t s-httpd  ---  for execute exactly a task by a tag

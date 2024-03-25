@@ -1,0 +1,13 @@
+---
+- name: 'Copy file from local to remote clients'
+  hosts: centos_clients
+
+  tasks:
+          - name: 'Copying file'
+            become: true
+            copy:
+                    src: /home/user/some.cfg
+                    dest: /tmp
+                    owner: user
+                    group: user
+                    mode: 0644
